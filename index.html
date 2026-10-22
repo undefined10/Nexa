@@ -119,47 +119,52 @@
             width: 100%;
         }
 
-        /* Fixed Button Styling */
-        a.btn-download {
+        /* Solid White Button Wrapper Container */
+        .btn-wrapper {
+            background-color: #FFFFFF !important;
+            border-radius: 35px !important;
+            padding: 16px 36px !important;
+            width: 100% !important;
+            max-width: 280px !important;
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.15) !important;
+            transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+        }
+
+        .btn-wrapper:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(255, 255, 255, 0.25) !important;
+        }
+
+        .btn-wrapper:active {
+            transform: scale(0.96);
+        }
+
+        /* Download Link Inner Text/Icon Styling */
+        .btn-wrapper a {
             display: inline-flex !important;
             align-items: center !important;
             justify-content: center !important;
             gap: 10px !important;
-            background-color: #FFFFFF !important;
             color: #000000 !important;
-            padding: 16px 36px !important;
-            border-radius: 35px !important;
             font-weight: 700 !important;
             font-size: 16px !important;
             text-decoration: none !important;
-            transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease !important;
-            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.15) !important;
             width: 100% !important;
-            max-width: 280px !important;
-            text-align: center !important;
-            border: none !important;
-            cursor: pointer !important;
+            height: 100% !important;
         }
 
-        a.btn-download svg {
+        .btn-wrapper svg {
             width: 20px;
             height: 20px;
             fill: #000000;
             transition: transform 0.2s ease;
         }
 
-        a.btn-download:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 35px rgba(255, 255, 255, 0.25) !important;
-            opacity: 0.95;
-        }
-
-        a.btn-download:hover svg {
+        .btn-wrapper:hover svg {
             transform: translateY(2px);
-        }
-
-        a.btn-download:active {
-            transform: scale(0.96);
         }
 
         /* Phone Mockup Preview */
@@ -325,13 +330,15 @@
             <p class="subtitle">Connect globally with crisp UI, custom Instagram color themes, profile picture synchronization, and absolute privacy.</p>
             
             <div class="cta-container">
-                <!-- Clean Google Drive Direct Download Link -->
-                <a href="https://drive.google.com/uc?export=download&id=17gkicPE-BgumyiYJVpIJ7I741VxS5Zra" class="btn-download" target="_blank" rel="noopener noreferrer">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
-                    </svg>
-                    Download APK
-                </a>
+                <!-- Wrapper guarantees white pill shape on GitHub Pages -->
+                <div class="btn-wrapper">
+                    <a href="https://drive.google.com/uc?export=download&id=17gkicPE-BgumyiYJVpIJ7I741VxS5Zra" target="_blank" rel="noopener noreferrer">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                        </svg>
+                        Download APK
+                    </a>
+                </div>
             </div>
         </section>
 
