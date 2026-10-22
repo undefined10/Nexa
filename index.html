@@ -33,7 +33,6 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Ambient Glow Effect optimized for mobile rendering */
         .glow-sphere {
             position: absolute;
             width: 280px;
@@ -113,33 +112,54 @@
 
         .cta-container {
             display: flex;
-            gap: 16px;
             justify-content: center;
             align-items: center;
             margin-bottom: 50px;
             padding: 0 16px;
         }
 
+        /* Redesigned Download Button */
         .btn-download {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
             background: var(--text-primary);
             color: var(--bg-color);
             padding: 16px 36px;
-            border-radius: 30px;
-            font-weight: 600;
+            border-radius: 35px;
+            font-weight: 700;
             font-size: 16px;
             text-decoration: none;
-            transition: transform 0.2s ease, opacity 0.2s ease;
-            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.08);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.15);
             width: 100%;
             max-width: 280px;
             text-align: center;
+        }
+
+        .btn-download svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+            transition: transform 0.2s ease;
+        }
+
+        .btn-download:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(255, 255, 255, 0.25);
+            opacity: 0.95;
+        }
+
+        .btn-download:hover svg {
+            transform: translateY(2px);
         }
 
         .btn-download:active {
             transform: scale(0.96);
         }
 
-        /* Phone Mockup Preview Optimized for Mobile Widths */
+        /* Phone Mockup Preview */
         .mockup-container {
             width: 100%;
             max-width: 290px;
@@ -192,7 +212,7 @@
             border-bottom-right-radius: 4px;
         }
 
-        /* Features Grid - Stacked cleanly on mobile */
+        /* Features Grid */
         .features {
             max-width: 1100px;
             margin: 0 auto 60px auto;
@@ -267,7 +287,6 @@
             border-top: 1px solid var(--border-color);
         }
 
-        /* Tablet & Desktop Breakpoints */
         @media (min-width: 640px) {
             .features {
                 grid-template-columns: repeat(3, 1fr);
@@ -303,8 +322,13 @@
             <p class="subtitle">Connect globally with crisp UI, custom Instagram color themes, profile picture synchronization, and absolute privacy.</p>
             
             <div class="cta-container">
-                <!-- Replace 'YOUR_DOWNLOAD_LINK_HERE' with your direct APK download link -->
-                <a href="https://drive.usercontent.google.com/download?id=17gkicPE-BgumyiYJVpIJ7I741VxS5Zra&export=download&authuser=0&confirm=t&uuid=f2a9da47-7269-4946-9324-b6e63e9958c8&at=AMrWOn1wpX5IbNR77K58DXVe6YOV%3A1792681650650">Download APK</a>
+                <!-- Redesigned Download Button with Direct Link -->
+                <a href="https://drive.usercontent.google.com/download?id=17gkicPE-BgumyiYJVpIJ7I741VxS5Zra&export=download&authuser=0&confirm=t&uuid=f2a9da47-7269-4946-9324-b6e63e9958c8&at=AMrWOn1wpX5IbNR77K58DXVe6YOV%3A1792681650650" class="btn-download" target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                    </svg>
+                    Download APK
+                </a>
             </div>
         </section>
 
