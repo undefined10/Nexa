@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Nexa — The Ad-Free Messenger</title>
     <!-- Google Fonts: Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
@@ -22,6 +22,7 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
@@ -29,20 +30,22 @@
             color: var(--text-primary);
             overflow-x: hidden;
             line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* Background Glow Effect */
+        /* Ambient Glow Effect optimized for mobile rendering */
         .glow-sphere {
             position: absolute;
-            width: 400px;
-            height: 400px;
-            background: rgba(112, 0, 255, 0.15);
-            filter: blur(120px);
+            width: 280px;
+            height: 280px;
+            background: rgba(112, 0, 255, 0.18);
+            filter: blur(90px);
             border-radius: 50%;
-            top: -100px;
+            top: -40px;
             left: 50%;
             transform: translateX(-50%);
             z-index: -1;
+            pointer-events: none;
         }
 
         header {
@@ -51,11 +54,11 @@
             align-items: center;
             max-width: 1100px;
             margin: 0 auto;
-            padding: 24px 20px;
+            padding: 20px 16px;
         }
 
         .logo {
-            font-size: 26px;
+            font-size: 24px;
             font-weight: 900;
             letter-spacing: 0.5px;
             background: var(--accent-gradient);
@@ -65,9 +68,9 @@
 
         .hero {
             max-width: 800px;
-            margin: 80px auto 40px auto;
+            margin: 40px auto 30px auto;
             text-align: center;
-            padding: 0 20px;
+            padding: 0 16px;
             opacity: 0;
             transform: translateY(20px);
             animation: fadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
@@ -86,25 +89,26 @@
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--border-color);
             border-radius: 20px;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 500;
             color: #A0A0A0;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
         }
 
         h1 {
-            font-size: clamp(40px, 7vw, 64px);
+            font-size: clamp(36px, 9vw, 64px);
             font-weight: 900;
             letter-spacing: -1px;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
             line-height: 1.1;
         }
 
         p.subtitle {
-            font-size: clamp(16px, 2vw, 18px);
+            font-size: clamp(15px, 4vw, 18px);
             color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto 36px auto;
+            max-width: 540px;
+            margin: 0 auto 30px auto;
+            padding: 0 10px;
         }
 
         .cta-container {
@@ -112,36 +116,39 @@
             gap: 16px;
             justify-content: center;
             align-items: center;
-            flex-wrap: wrap;
-            margin-bottom: 60px;
+            margin-bottom: 50px;
+            padding: 0 16px;
         }
 
         .btn-download {
             background: var(--text-primary);
             color: var(--bg-color);
-            padding: 14px 32px;
+            padding: 16px 36px;
             border-radius: 30px;
             font-weight: 600;
             font-size: 16px;
             text-decoration: none;
             transition: transform 0.2s ease, opacity 0.2s ease;
-            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.08);
+            width: 100%;
+            max-width: 280px;
+            text-align: center;
         }
 
-        .btn-download:hover {
-            transform: translateY(-2px);
-            opacity: 0.9;
+        .btn-download:active {
+            transform: scale(0.96);
         }
 
-        /* Phone Mockup Preview */
+        /* Phone Mockup Preview Optimized for Mobile Widths */
         .mockup-container {
-            max-width: 320px;
-            margin: 0 auto 80px auto;
+            width: 100%;
+            max-width: 290px;
+            margin: 0 auto 60px auto;
             background: var(--surface-color);
             border: 2px solid var(--border-color);
-            border-radius: 40px;
-            padding: 16px;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(112, 0, 255, 0.1);
+            border-radius: 36px;
+            padding: 12px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(112, 0, 255, 0.1);
             opacity: 0;
             transform: translateY(30px);
             animation: fadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
@@ -149,9 +156,9 @@
 
         .mockup-screen {
             background: var(--bg-color);
-            border-radius: 28px;
-            padding: 20px 16px;
-            height: 480px;
+            border-radius: 24px;
+            padding: 18px 14px;
+            height: 420px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -159,7 +166,7 @@
 
         .mockup-header {
             font-weight: 800;
-            font-size: 20px;
+            font-size: 18px;
             background: var(--accent-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -168,10 +175,10 @@
 
         .mockup-chat-bubble {
             background: var(--surface-color);
-            padding: 12px 16px;
-            border-radius: 18px;
-            font-size: 13px;
-            max-width: 80%;
+            padding: 10px 14px;
+            border-radius: 16px;
+            font-size: 12px;
+            max-width: 85%;
             align-self: flex-start;
             color: #E0E0E0;
             border-bottom-left-radius: 4px;
@@ -181,89 +188,103 @@
             background: var(--accent-solid);
             align-self: flex-end;
             color: #FFFFFF;
-            border-bottom-left-radius: 18px;
+            border-bottom-left-radius: 16px;
             border-bottom-right-radius: 4px;
         }
 
-        /* Features Grid */
+        /* Features Grid - Stacked cleanly on mobile */
         .features {
-            max-width: 1000px;
-            margin: 0 auto 100px auto;
+            max-width: 1100px;
+            margin: 0 auto 60px auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-            padding: 0 20px;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            padding: 0 16px;
         }
 
         .feature-card {
             background: var(--surface-color);
             border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 28px;
-            transition: border-color 0.3s ease;
-        }
-
-        .feature-card:hover {
-            border-color: #555;
+            border-radius: 18px;
+            padding: 24px;
         }
 
         .feature-card h3 {
-            font-size: 18px;
+            font-size: 17px;
             font-weight: 600;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         .feature-card p {
             color: var(--text-secondary);
-            font-size: 14px;
+            font-size: 13.5px;
         }
 
         /* Requirements Section */
         .requirements {
             max-width: 800px;
-            margin: 0 auto 100px auto;
+            margin: 0 auto 60px auto;
             background: var(--surface-color);
             border: 1px solid var(--border-color);
-            border-radius: 24px;
-            padding: 40px;
+            border-radius: 20px;
+            padding: 28px 16px;
             text-align: center;
-            padding-left: 20px;
-            padding-right: 20px;
+            margin-left: 16px;
+            margin-right: 16px;
         }
 
         .requirements h2 {
-            font-size: 24px;
-            margin-bottom: 24px;
+            font-size: 20px;
+            margin-bottom: 20px;
             font-weight: 700;
         }
 
         .req-grid {
             display: flex;
-            justify-content: center;
-            gap: 40px;
-            flex-wrap: wrap;
+            flex-direction: column;
+            gap: 20px;
         }
 
         .req-item span {
             display: block;
-            font-size: 12px;
+            font-size: 11px;
             color: var(--text-secondary);
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 4px;
+            margin-bottom: 2px;
         }
 
         .req-item strong {
-            font-size: 16px;
+            font-size: 15px;
             color: var(--text-primary);
         }
 
         footer {
             text-align: center;
-            padding: 40px 20px;
+            padding: 30px 16px;
             color: var(--text-secondary);
-            font-size: 13px;
+            font-size: 12px;
             border-top: 1px solid var(--border-color);
+        }
+
+        /* Tablet & Desktop Breakpoints */
+        @media (min-width: 640px) {
+            .features {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+                padding: 0 20px;
+            }
+            .requirements {
+                margin: 0 auto 80px auto;
+                padding: 40px;
+            }
+            .req-grid {
+                flex-direction: row;
+                justify-content: space-around;
+            }
+            .hero {
+                margin: 70px auto 40px auto;
+            }
         }
     </style>
 </head>
@@ -279,11 +300,11 @@
         <section class="hero">
             <div class="badge">100% Free & Ad-Free Experience</div>
             <h1>Messaging,<br>refined.</h1>
-            <p class="subtitle">Connect globally with crisp UI, custom color themes, profile picture synchronization, and absolute privacy.</p>
+            <p class="subtitle">Connect globally with crisp UI, custom Instagram color themes, profile picture synchronization, and absolute privacy.</p>
             
             <div class="cta-container">
                 <!-- Replace 'YOUR_DOWNLOAD_LINK_HERE' with your direct APK download link -->
-                <a href="https://drive.usercontent.google.com/download?id=17gkicPE-BgumyiYJVpIJ7I741VxS5Zra&export=download&authuser=0&confirm=t&uuid=f2a9da47-7269-4946-9324-b6e63e9958c8&at=AMrWOn3I91rMlvLb-vUvdMuuSMvY%3A1792682324392">Download Now</a>
+                <a href="https://drive.usercontent.google.com/download?id=17gkicPE-BgumyiYJVpIJ7I741VxS5Zra&export=download&authuser=0&confirm=t&uuid=f2a9da47-7269-4946-9324-b6e63e9958c8&at=AMrWOn1wpX5IbNR77K58DXVe6YOV%3A1792681650650">Download APK</a>
             </div>
         </section>
 
@@ -291,11 +312,11 @@
         <div class="mockup-container">
             <div class="mockup-screen">
                 <div class="mockup-header">Nexa</div>
-                <div style="display: flex; flex-direction: column; gap: 10px;">
+                <div style="display: flex; flex-direction: column; gap: 8px;">
                     <div class="mockup-chat-bubble">Hey! Welcome to Nexa 👋</div>
                     <div class="mockup-chat-bubble me">Completely ad-free and lightning fast.</div>
                 </div>
-                <div style="background: var(--border-color); height: 36px; border-radius: 18px; display: flex; align-items: center; padding: 0 12px; font-size: 12px; color: #777;">
+                <div style="background: var(--border-color); height: 34px; border-radius: 17px; display: flex; align-items: center; padding: 0 12px; font-size: 11.5px; color: #777;">
                     Message...
                 </div>
             </div>
@@ -311,7 +332,7 @@
                 <p>Set and crop your custom circular avatar, synced instantly across the network.</p>
             </div>
             <div class="feature-card">
-                <h3>Catppuccin Themes</h3>
+                <h3>Instagram Themes</h3>
                 <p>Personalize your chat experience with a curated selection of vibrant gradient accents.</p>
             </div>
         </section>
@@ -321,7 +342,7 @@
             <div class="req-grid">
                 <div class="req-item">
                     <span>Platform</span>
-                    <strong>Android 5.0 (Lollipop) or higher</strong>
+                    <strong>Android 5.0+ (Lollipop)</strong>
                 </div>
                 <div class="req-item">
                     <span>Architecture</span>
@@ -329,7 +350,7 @@
                 </div>
                 <div class="req-item">
                     <span>Storage</span>
-                    <strong>~60 MB Free Space</strong>
+                    <strong>~35 MB Free Space</strong>
                 </div>
             </div>
         </section>
