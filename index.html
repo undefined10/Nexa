@@ -116,46 +116,49 @@
             align-items: center;
             margin-bottom: 50px;
             padding: 0 16px;
-        }
-
-        /* Redesigned Download Button */
-        .btn-download {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            background: var(--text-primary);
-            color: var(--bg-color);
-            padding: 16px 36px;
-            border-radius: 35px;
-            font-weight: 700;
-            font-size: 16px;
-            text-decoration: none;
-            transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
-            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.15);
             width: 100%;
-            max-width: 280px;
-            text-align: center;
         }
 
-        .btn-download svg {
+        /* Fixed Button Styling */
+        a.btn-download {
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 10px !important;
+            background-color: #FFFFFF !important;
+            color: #000000 !important;
+            padding: 16px 36px !important;
+            border-radius: 35px !important;
+            font-weight: 700 !important;
+            font-size: 16px !important;
+            text-decoration: none !important;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease !important;
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.15) !important;
+            width: 100% !important;
+            max-width: 280px !important;
+            text-align: center !important;
+            border: none !important;
+            cursor: pointer !important;
+        }
+
+        a.btn-download svg {
             width: 20px;
             height: 20px;
-            fill: currentColor;
+            fill: #000000;
             transition: transform 0.2s ease;
         }
 
-        .btn-download:hover {
+        a.btn-download:hover {
             transform: translateY(-2px);
-            box-shadow: 0 15px 35px rgba(255, 255, 255, 0.25);
+            box-shadow: 0 15px 35px rgba(255, 255, 255, 0.25) !important;
             opacity: 0.95;
         }
 
-        .btn-download:hover svg {
+        a.btn-download:hover svg {
             transform: translateY(2px);
         }
 
-        .btn-download:active {
+        a.btn-download:active {
             transform: scale(0.96);
         }
 
@@ -322,8 +325,8 @@
             <p class="subtitle">Connect globally with crisp UI, custom Instagram color themes, profile picture synchronization, and absolute privacy.</p>
             
             <div class="cta-container">
-                <!-- Redesigned Download Button with Direct Link -->
-                <a href="https://drive.usercontent.google.com/download?id=17gkicPE-BgumyiYJVpIJ7I741VxS5Zra&export=download&authuser=0&confirm=t&uuid=f2a9da47-7269-4946-9324-b6e63e9958c8&at=AMrWOn1wpX5IbNR77K58DXVe6YOV%3A1792681650650" class="btn-download" target="_blank" rel="noopener noreferrer">
+                <!-- Clean Google Drive Direct Download Link -->
+                <a href="https://drive.google.com/uc?export=download&id=17gkicPE-BgumyiYJVpIJ7I741VxS5Zra" class="btn-download" target="_blank" rel="noopener noreferrer">
                     <svg viewBox="0 0 24 24">
                         <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
                     </svg>
