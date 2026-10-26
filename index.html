@@ -2,397 +2,301 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Nexa — The Ad-Free Messenger</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexa: Modern Messaging</title>
     <!-- Google Fonts: Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
+            --accent-primary: #7000FF;
+            --accent-secondary: #9747FF;
             --bg-color: #000000;
             --surface-color: #121212;
-            --border-color: #262626;
-            --text-primary: #FFFFFF;
-            --text-secondary: #8E8E8E;
-            --accent-gradient: linear-gradient(135deg, #7000FF 0%, #D62976 100%);
-            --accent-solid: #7000FF;
+            --surface-card: #1A1A1A;
+            --text-main: #FFFFFF;
+            --text-secondary: #888888;
         }
 
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Inter', sans-serif;
             -webkit-tap-highlight-color: transparent;
         }
 
         body {
             background-color: var(--bg-color);
-            color: var(--text-primary);
-            overflow-x: hidden;
-            line-height: 1.5;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        .glow-sphere {
-            position: absolute;
-            width: 280px;
-            height: 280px;
-            background: rgba(112, 0, 255, 0.18);
-            filter: blur(90px);
-            border-radius: 50%;
-            top: -40px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 20px 16px;
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: 900;
-            letter-spacing: 0.5px;
-            background: var(--accent-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero {
-            max-width: 800px;
-            margin: 40px auto 30px auto;
-            text-align: center;
+            color: var(--text-main);
+            line-height: 1.6;
             padding: 0 16px;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .container {
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 40px 0;
         }
 
-        .badge {
-            display: inline-block;
-            padding: 6px 14px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 500;
-            color: #A0A0A0;
-            margin-bottom: 20px;
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            margin-bottom: 36px;
         }
 
-        h1 {
-            font-size: clamp(36px, 9vw, 64px);
-            font-weight: 900;
-            letter-spacing: -1px;
-            margin-bottom: 16px;
-            line-height: 1.1;
+        /* Exact Icon Match Wrapper */
+        .app-icon-wrapper {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 20px auto;
+            filter: drop-shadow(0 0 24px rgba(112, 0, 255, 0.4));
         }
 
-        p.subtitle {
-            font-size: clamp(15px, 4vw, 18px);
+        .app-icon-wrapper svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .app-title {
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 6px;
+        }
+
+        .app-tagline {
+            font-size: 15px;
             color: var(--text-secondary);
-            max-width: 540px;
-            margin: 0 auto 30px auto;
-            padding: 0 10px;
+            margin-bottom: 24px;
         }
 
-        .cta-container {
+        /* Download Badge & Button */
+        .download-box {
+            background-color: var(--surface-color);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 24px;
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .btn-download {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            color: #FFFFFF;
+            font-size: 16px;
+            font-weight: 700;
+            padding: 16px;
+            border-radius: 14px;
+            text-decoration: none;
+            box-shadow: 0 8px 20px rgba(112, 0, 255, 0.4);
+            transition: transform 0.2s ease, opacity 0.2s ease;
+            margin-bottom: 14px;
+        }
+
+        .btn-download:active {
+            transform: scale(0.98);
+            opacity: 0.9;
+        }
+
+        .meta-info {
             display: flex;
             justify-content: center;
-            align-items: center;
-            margin-bottom: 50px;
-            padding: 0 16px;
-            width: 100%;
-        }
-
-        /* Solid White Button Wrapper Container */
-        .btn-wrapper {
-            background-color: #FFFFFF !important;
-            border-radius: 35px !important;
-            padding: 16px 36px !important;
-            width: 100% !important;
-            max-width: 280px !important;
-            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.15) !important;
-            transition: transform 0.2s ease, box-shadow 0.2s ease !important;
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-        }
-
-        .btn-wrapper:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 35px rgba(255, 255, 255, 0.25) !important;
-        }
-
-        .btn-wrapper:active {
-            transform: scale(0.96);
-        }
-
-        /* Download Link Inner Text/Icon Styling */
-        .btn-wrapper a {
-            display: inline-flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            gap: 10px !important;
-            color: #000000 !important;
-            font-weight: 700 !important;
-            font-size: 16px !important;
-            text-decoration: none !important;
-            width: 100% !important;
-            height: 100% !important;
-        }
-
-        .btn-wrapper svg {
-            width: 20px;
-            height: 20px;
-            fill: #000000;
-            transition: transform 0.2s ease;
-        }
-
-        .btn-wrapper:hover svg {
-            transform: translateY(2px);
-        }
-
-        /* Phone Mockup Preview */
-        .mockup-container {
-            width: 100%;
-            max-width: 290px;
-            margin: 0 auto 60px auto;
-            background: var(--surface-color);
-            border: 2px solid var(--border-color);
-            border-radius: 36px;
-            padding: 12px;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(112, 0, 255, 0.1);
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
-        }
-
-        .mockup-screen {
-            background: var(--bg-color);
-            border-radius: 24px;
-            padding: 18px 14px;
-            height: 420px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .mockup-header {
-            font-weight: 800;
-            font-size: 18px;
-            background: var(--accent-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-align: left;
-        }
-
-        .mockup-chat-bubble {
-            background: var(--surface-color);
-            padding: 10px 14px;
-            border-radius: 16px;
-            font-size: 12px;
-            max-width: 85%;
-            align-self: flex-start;
-            color: #E0E0E0;
-            border-bottom-left-radius: 4px;
-        }
-
-        .mockup-chat-bubble.me {
-            background: var(--accent-solid);
-            align-self: flex-end;
-            color: #FFFFFF;
-            border-bottom-left-radius: 16px;
-            border-bottom-right-radius: 4px;
-        }
-
-        /* Features Grid */
-        .features {
-            max-width: 1100px;
-            margin: 0 auto 60px auto;
-            display: grid;
-            grid-template-columns: 1fr;
             gap: 16px;
-            padding: 0 16px;
-        }
-
-        .feature-card {
-            background: var(--surface-color);
-            border: 1px solid var(--border-color);
-            border-radius: 18px;
-            padding: 24px;
-        }
-
-        .feature-card h3 {
-            font-size: 17px;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .feature-card p {
+            font-size: 12px;
             color: var(--text-secondary);
-            font-size: 13.5px;
         }
 
-        /* Requirements Section */
-        .requirements {
-            max-width: 800px;
-            margin: 0 auto 60px auto;
-            background: var(--surface-color);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 28px 16px;
-            text-align: center;
-            margin-left: 16px;
-            margin-right: 16px;
-        }
-
-        .requirements h2 {
-            font-size: 20px;
-            margin-bottom: 20px;
-            font-weight: 700;
-        }
-
-        .req-grid {
+        .meta-info span {
             display: flex;
-            flex-direction: column;
-            gap: 20px;
+            align-items: center;
+            gap: 4px;
         }
 
-        .req-item span {
-            display: block;
-            font-size: 11px;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 2px;
+        /* Section Cards */
+        .section-card {
+            background-color: var(--surface-card);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
         }
 
-        .req-item strong {
-            font-size: 15px;
-            color: var(--text-primary);
+        .section-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #FFFFFF;
         }
 
+        .section-title i {
+            color: var(--accent-primary);
+        }
+
+        /* Features List */
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 14px;
+            color: #CCCCCC;
+            margin-bottom: 10px;
+        }
+
+        .feature-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .feature-item i {
+            color: var(--accent-secondary);
+            margin-top: 3px;
+        }
+
+        /* Guide Steps */
+        .guide-step {
+            display: flex;
+            gap: 12px;
+            font-size: 14px;
+            color: #CCCCCC;
+            margin-bottom: 12px;
+        }
+
+        .guide-step:last-child {
+            margin-bottom: 0;
+        }
+
+        .step-number {
+            background-color: rgba(112, 0, 255, 0.2);
+            color: var(--accent-primary);
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        /* Footer */
         footer {
             text-align: center;
-            padding: 30px 16px;
-            color: var(--text-secondary);
             font-size: 12px;
-            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            margin-top: 40px;
+            padding-bottom: 20px;
         }
 
-        @media (min-width: 640px) {
-            .features {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 20px;
-                padding: 0 20px;
-            }
-            .requirements {
-                margin: 0 auto 80px auto;
-                padding: 40px;
-            }
-            .req-grid {
-                flex-direction: row;
-                justify-content: space-around;
-            }
-            .hero {
-                margin: 70px auto 40px auto;
-            }
+        footer a {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-weight: 500;
         }
     </style>
 </head>
 <body>
 
-    <div class="glow-sphere"></div>
-
-    <header>
-        <div class="logo">Nexa</div>
-    </header>
-
-    <main>
-        <section class="hero">
-            <div class="badge">100% Free & Ad-Free Experience</div>
-            <h1>Messaging,<br>refined.</h1>
-            <p class="subtitle">Connect globally with crisp UI, custom Instagram color themes, profile picture synchronization, and absolute privacy.</p>
-            
-            <div class="cta-container">
-                <!-- Wrapper guarantees white pill shape on GitHub Pages -->
-                <div class="btn-wrapper">
-                    <a href="https://drive.google.com/uc?export=download&id=17gkicPE-BgumyiYJVpIJ7I741VxS5Zra" target="_blank" rel="noopener noreferrer">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
-                        </svg>
-                        Download APK
-                    </a>
-                </div>
+    <div class="container">
+        <!-- Hero Header with Exact Chat Icon -->
+        <div class="hero">
+            <div class="app-icon-wrapper">
+                <svg viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="iconGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#7000FF" />
+                            <stop offset="100%" stop-color="#9747FF" />
+                        </linearGradient>
+                    </defs>
+                    <path d="M432 96H80C53.5 96 32 117.5 32 144V336C32 362.5 53.5 384 80 384H192L272 456V384H432C458.5 384 480 362.5 480 336V144C480 117.5 458.5 96 432 96Z" fill="url(#iconGradient)"/>
+                    <circle cx="160" cy="240" r="32" fill="white"/>
+                    <circle cx="256" cy="240" r="32" fill="white"/>
+                    <circle cx="352" cy="240" r="32" fill="white"/>
+                </svg>
             </div>
-        </section>
+            <h1 class="app-title">Nexa Messaging</h1>
+            <p class="app-tagline">Clean, fast, and modern Instagram-inspired chat experience</p>
+        </div>
 
-        <!-- Dynamic Minimal Mockup -->
-        <div class="mockup-container">
-            <div class="mockup-screen">
-                <div class="mockup-header">Nexa</div>
-                <div style="display: flex; flex-direction: column; gap: 8px;">
-                    <div class="mockup-chat-bubble">Hey! Welcome to Nexa 👋</div>
-                    <div class="mockup-chat-bubble me">Completely ad-free and lightning fast.</div>
-                </div>
-                <div style="background: var(--border-color); height: 34px; border-radius: 17px; display: flex; align-items: center; padding: 0 12px; font-size: 11.5px; color: #777;">
-                    Message...
-                </div>
+        <!-- Download Action Box -->
+        <div class="download-box">
+            <!-- PASTE YOUR DOWNLOAD LINK INSIDE THE href="" BELOW -->
+            <a href="https://release-assets.githubusercontent.com/github-production-release-asset/1429896511/263e9645-9a72-460b-b98f-3e55b61291be?sp=r&sv=2018-11-09&sr=b&spr=https&se=2026-10-26T18%3A08%3A14Z&rscd=attachment%3B+filename%3DNexa.apk&rsct=application%2Fvnd.android.package-archive&skoid=96c2d410-5711-43a1-aedd-ab1947aa7ab0&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skt=2026-10-26T17%3A07%3A21Z&ske=2026-10-26T18%3A08%3A14Z&sks=b&skv=2018-11-09&sig=nm8VC9hieNy9iJ3FiDZvcWDjQeROrK3cP1IqKnkqiJ0%3D&jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmVsZWFzZS1hc3NldHMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwia2V5Ijoia2V5MSIsImV4cCI6MTc5MzAzNzU4NywibmJmIjoxNzkzMDM1Nzg3LCJwYXRoIjoicmVsZWFzZWFzc2V0cHJvZHVjdGlvbi5ibG9iLmNvcmUud2luZG93cy5uZXQifQ.t6pH3TcLJMaFKkgp8INTjqHO6Mun1bD9wmy425byYCw&response-content-disposition=attachment%3B%20filename%3DNexa.apk&response-content-type=application%2Fvnd.android.package-archive" class="btn-download">
+                <i class="fa-solid fa-download"></i> Download APK
+            </a>
+            <div class="meta-info">
+                <span><i class="fa-solid fa-mobile-screen"></i> Android Only</span>
+                <span><i class="fa-solid fa-file-arrow-down"></i> Size: ~60 MB</span>
+                <span><i class="fa-solid fa-shield-halved"></i> v1.0.0</span>
             </div>
         </div>
 
-        <section class="features">
-            <div class="feature-card">
-                <h3>Immersive Full-Screen</h3>
-                <p>Designed from the ground up for maximum screen estate and seamless touch interactions.</p>
+        <!-- Core Features Card -->
+        <div class="section-card">
+            <div class="section-title">
+                <i class="fa-solid fa-star"></i> Core Features
             </div>
-            <div class="feature-card">
-                <h3>Global Profiles</h3>
-                <p>Set and crop your custom circular avatar, synced instantly across the network.</p>
+            <div class="feature-item">
+                <i class="fa-solid fa-check"></i>
+                <span>Catppuccin-inspired UI with adaptive bubble grouping & dual heart reactions</span>
             </div>
-            <div class="feature-card">
-                <h3>Instagram Themes</h3>
-                <p>Personalize your chat experience with a curated selection of vibrant gradient accents.</p>
+            <div class="feature-item">
+                <i class="fa-solid fa-check"></i>
+                <span>Secure Message Requests inbox with accept and decline controls</span>
             </div>
-        </section>
+            <div class="feature-item">
+                <i class="fa-solid fa-check"></i>
+                <span>Global profile photo syncing using decentralized Base64 architecture</span>
+            </div>
+            <div class="feature-item">
+                <i class="fa-solid fa-check"></i>
+                <span>Customizable dynamic accent chat themes and pitch-black dark mode</span>
+            </div>
+            <div class="feature-item">
+                <i class="fa-solid fa-check"></i>
+                <span>100% Free-to-use with zero intrusive ads or tracking</span>
+            </div>
+        </div>
 
-        <section class="requirements">
-            <h2>System Requirements</h2>
-            <div class="req-grid">
-                <div class="req-item">
-                    <span>Platform</span>
-                    <strong>Android 5.0+ (Lollipop)</strong>
-                </div>
-                <div class="req-item">
-                    <span>Architecture</span>
-                    <strong>ARM64 / ARMv7</strong>
-                </div>
-                <div class="req-item">
-                    <span>Storage</span>
-                    <strong>~35 MB Free Space</strong>
-                </div>
+        <!-- Installation Guide Card -->
+        <div class="section-card">
+            <div class="section-title">
+                <i class="fa-solid fa-circle-question"></i> How to Install
             </div>
-        </section>
-    </main>
+            <div class="guide-step">
+                <div class="step-number">1</div>
+                <div>Tap the <strong>Download APK</strong> button above to save the installation file to your phone</div>
+            </div>
+            <div class="guide-step">
+                <div class="step-number">2</div>
+                <div>Open your device's <strong>Downloads</strong> folder and tap on the downloaded `app-release.apk` file</div>
+            </div>
+            <div class="guide-step">
+                <div class="step-number">3</div>
+                <div>If prompted, enable <strong>"Install from Unknown Sources"</strong> in your security settings</div>
+            </div>
+            <div class="guide-step">
+                <div class="step-number">4</div>
+                <div>Complete the installation, open Nexa, and log in to start chatting!</div>
+            </div>
+        </div>
 
-    <footer>
-        <p>&copy; <script>document.write(new Date().getFullYear())</script> Nexa App. All rights reserved.</p>
-    </footer>
+        <!-- Footer -->
+        <footer>
+            Built with ❤️ <a href="https://www.instagram.com/lwkyviruu/" target="_blank">virendra</a><br>
+            © 2026 Neon Core Developers, All rights reserved.
+        </footer>
+    </div>
 
 </body>
 </html>
